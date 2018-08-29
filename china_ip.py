@@ -1,6 +1,9 @@
 import json
+import os
 
-with open('countries_ip.json') as c:
+workpath = os.getcwd() + '/ipsearch/'
+
+with open(workpath + 'countries_ip.json') as c:
     countries_ip = json.loads(c.read())
 
 china_ip = countries_ip['CN']
@@ -37,5 +40,5 @@ for ip_item in china_ip:
     ipphase[ip] = ipall
     ipall = list()
 
-with open('china_ip.json', 'w+') as c:
+with open(workpath + 'china_ip.json', 'w+') as c:
     c.write(json.dumps(ipphase))

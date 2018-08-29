@@ -2,11 +2,19 @@ import json
 import multiprocessing
 import requests
 import re
+import json
+import time
 
-with open('china_ip.json') as data:
-    a = json.loads(data.read())
+ip_container = dict()
 
-print(len(a))
+a = None
+if not a:
+    print('yes')
+
+# for i in range(100):
+#     print(i, flush=True)
+#     time.sleep(0.1)
+
 # with open('countries_ip.json') as countries_ip:
 #     ips = json.loads(countries_ip.read())
 # # def a(b, c):

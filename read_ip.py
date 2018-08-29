@@ -1,8 +1,11 @@
 import requests
 import re
 import json
+import os
 from multiprocessing import Pool
 from multiprocessing import Manager
+
+workpath = os.getcwd() + '/ipsearch/'
 
 # 获取ipx信息
 
@@ -23,7 +26,7 @@ def main():
     # 创建共享列表
     data = Manager().list()
     ip_container = list()
-    with open('ip.conf') as a:
+    with open(workpath + 'ip.conf') as a:
         for line in a.readlines():
             # 去除文件中的换行符
             urls.append(line.strip('\n'))
@@ -37,7 +40,7 @@ def main():
 
     ip_container = json.dumps(data)
 
-    with open('ip_address.json', 'w+') as ip_address:
+    with open(workpath + 'ip_address.json', 'w+') as ip_address:
         ip_address.write(ip_container)
 
 
