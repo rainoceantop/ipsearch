@@ -9,7 +9,8 @@ with open(workpath + 'countries_ip.json') as c:
 china_ip = countries_ip['CN']
 
 ipphase = dict()
-ipall = list()
+ipall = list()  # 记录根据长度转换的所有所有ip地址
+ipfield = list()  # 记录ip域地址
 
 for ip_item in china_ip:
     separator_index = ip_item.index(':')
@@ -39,6 +40,12 @@ for ip_item in china_ip:
 
     ipphase[ip] = ipall
     ipall = list()
+    ipfield.append(ip)
 
+# 将中国所有ip地址写进文件
 with open(workpath + 'china_ip.json', 'w+') as c:
     c.write(json.dumps(ipphase))
+
+# 将中国ip域地址写进文件
+with open(workpath + 'china_ip_field', 'w+') as c:
+    c.write(json.dumps(ipfield))
